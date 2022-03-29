@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.modify:
-                Student student4 = DaoUtilsStore.getInstance().getmStudentDaoUtils().queryById(72);
+                Student student4 = DaoUtilsStore.getInstance().getmStudentDaoUtils().queryById(1);
                 student4.setName("王旭成333");
                 if (DaoUtilsStore.getInstance().getmStudentDaoUtils().update(student4)){
                     Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_SHORT).show();
