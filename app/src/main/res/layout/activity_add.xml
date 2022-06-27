@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="8dp"
+        android:text="添加学生"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学生姓名："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/name_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入学生姓名"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学生学号："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/study_no_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入学生学号"
+            android:inputType="number"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学生班级："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/class_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入学生班级"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数学成绩："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/math_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入数学成绩"
+            android:inputType="number"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="语文成绩："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/chinese_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入语文成绩"
+            android:inputType="number"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="英语成绩："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/english_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入英语成绩"
+            android:inputType="number"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总成绩："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/sum_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入总成绩"
+            android:inputType="number"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="排名："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/rank_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入学生排名"
+            android:inputType="number"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="添加" />
+
+
+</LinearLayout>
