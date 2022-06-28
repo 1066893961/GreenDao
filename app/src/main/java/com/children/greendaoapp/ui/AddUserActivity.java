@@ -57,7 +57,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
                 user.setEnglish(english_et.getText().toString());
                 user.setMath(math_et.getText().toString());
                 user.setSum(sum_et.getText().toString());
-                user.setRank(Integer.getInteger(rank_et.getText().toString()));
+                user.setRank(Integer.parseInt(rank_et.getText().toString()));
 
                 List<User> sLists = DaoUtilsStore2.getInstance().getmUserDaoUtils().queryAll();
                 boolean canInsert = true;

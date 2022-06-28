@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GreenDaoApp</string>
+    <string name="app_name">学生信息管理</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
