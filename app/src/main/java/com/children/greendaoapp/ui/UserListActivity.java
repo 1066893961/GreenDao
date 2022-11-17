@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,14 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.children.greendaoapp.R;
 import com.children.greendaoapp.adapter.StudentListAdapter;
-import com.children.greendaoapp.entity.Student;
-import com.children.greendaoapp.entity.User;
-import com.children.greendaoapp.utils.DaoUtilsStore;
 import com.children.greendaoapp.utils.DaoUtilsStore2;
-import com.children.greendaoapp.utils.RandomValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserListActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView add;
@@ -33,7 +24,7 @@ public class UserListActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_list);
         add = findViewById(R.id.add);
         rv = findViewById(R.id.rv);
 
