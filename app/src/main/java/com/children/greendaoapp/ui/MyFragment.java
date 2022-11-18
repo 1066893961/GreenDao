@@ -56,7 +56,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         name.setText("登录账号：" + phone);
 
         logout.setOnClickListener(view -> {
-            EventBus.getDefault().post(new LogoutEvent());
+            logolOut();
             Intent intent = new Intent();
             intent.setClass(getActivity(), LoginActivity.class);
             startActivity(intent);
@@ -68,6 +68,20 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         agree_rel.setOnClickListener(this);
         change_rel.setOnClickListener(this);
         return mView;
+    }
+
+    /**
+     * 退出登录  清空缓存的登录账号  发退出登录广播
+     */
+    private void logolOut(){
+        EventBus.getDefault().post(new LogoutEvent());
+        SharedPreferences sp = getContext().getSharedPreferences("MY_SHARE", Context.MODE_PRIVATE);
+        //获取Editor对象，这个对象用于写入，可理解为编辑
+        SharedPreferences.Editor editor = sp.edit();
+        //Editor对象有几个方法需要注：clear()，commit()，putXXX(),clear()为清空Share文件中的内容，
+        //commit()为提交，editor在put值以后，需要调用commit方法才能被真正写入到Share文件中
+        editor.putString("phone", "").commit();
+
     }
 
 
