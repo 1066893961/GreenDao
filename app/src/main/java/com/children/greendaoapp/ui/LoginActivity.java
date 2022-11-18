@@ -31,6 +31,22 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         regist = findViewById(R.id.regist);
 
+        //先获取对应的Share
+        SharedPreferences sp2 = this.getSharedPreferences("MY_SHARE", Context.MODE_PRIVATE);
+        //根据key取出对应的值
+        String phone = sp2.getString("phone", "");//第二个参数为默认值，即当从Share中取不到时，返回这个值
+
+        /**
+         * 判断是否已经登录  已经登录直接跳转首页
+         */
+        if (!phone.equals("")){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
+        //跳转注册页面
         regist.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, RegistActivity.class);
             startActivity(intent);
@@ -44,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             List<User> sLists = DaoUtilsStore2.getInstance().getmUserDaoUtils().queryAll();
             //是否能登录
             boolean canInsert = false;
+            //判断 是否可插入
             for (int i = 0; i < sLists.size(); i++) {
                 if (sLists.get(i).getPhone().equals(user.getPhone()) && sLists.get(i).getPassword().equals(sLists.get(i).getPassword())) {
                     canInsert = true;
@@ -61,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(getApplicationContext(), "手机号或密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
             }

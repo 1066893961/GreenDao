@@ -15,7 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.children.greendaoapp.R;
 import com.children.greendaoapp.entity.BottomTab;
+import com.children.greendaoapp.event.LogoutEvent;
 import com.children.greendaoapp.utils.FragmentTabHost;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +28,11 @@ import java.util.List;
  * 首页
  */
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = MainActivity.class.getSimpleName();
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(LogoutEvent event) {
+        finish();
+    }
 
 
     private FragmentTabHost mTabHost;
