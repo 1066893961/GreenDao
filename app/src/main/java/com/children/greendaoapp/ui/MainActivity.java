@@ -1,5 +1,6 @@
 package com.children.greendaoapp.ui;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTabHost;
 
 import com.children.greendaoapp.R;
 import com.children.greendaoapp.entity.BottomTab;
+import com.children.greendaoapp.utils.FragmentTabHost;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         // 设置FragmentTab
         mInflater = LayoutInflater.from(this);
         mTabHost = (FragmentTabHost)findViewById(android.R.id.tabhost);
-        mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
+        mTabHost.setup(this, getFragmentManager(), R.id.realtabcontent);
 
 
         for (BottomTab bottomTab : mBottomTabs){
@@ -91,13 +93,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String tag =  mTabHost.getCurrentTabTag();
-        if (resultCode == 789){
-//            Bundle bundle = data.getExtras();
-//            int tabPosition = bundle.getInt("NewTabPostion");
-//            NewsFragment newsFragment = (NewsFragment) getSupportFragmentManager().findFragmentByTag(tag);
-//            newsFragment.setCurrentChannel(tabPosition);
-//            newsFragment.notifyChannelChange();
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case 1000:
+                case 2000:
+                    String tag =  mTabHost.getCurrentTabTag();
+                    HomePageFragment homePageFragment = (HomePageFragment) getFragmentManager().findFragmentByTag(tag);
+                    homePageFragment.notifyChannelChange();
+                    break;
+            }
         }
     }
 }

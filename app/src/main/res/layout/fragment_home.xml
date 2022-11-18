@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:text="学生列表"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/add"
         android:layout_width="wrap_content"
-        android:text="我的"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="8dp"
+        android:text="添加"
+        android:textColor="@color/purple_500"
+        android:textSize="15sp" />
 
-</LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" />
+
+    <TextView
+        android:id="@+id/empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:drawableTop="@mipmap/empty"
+        android:textColor="#a9b7b7"
+        android:textSize="18sp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:text="暂无数据" />
+
+</RelativeLayout>

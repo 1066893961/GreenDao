@@ -16,12 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.children.greendaoapp.R;
 import com.children.greendaoapp.entity.Student;
 import com.children.greendaoapp.entity.User;
-import com.children.greendaoapp.ui.AddUserActivity;
 import com.children.greendaoapp.ui.UserInfoActivity;
-import com.children.greendaoapp.ui.UserListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @Description:
@@ -30,10 +29,10 @@ import java.util.List;
  */
 public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.StudentViewHolder> {
 
-    private List<User> studentList = new ArrayList<>();
+    private List<Student> studentList = new ArrayList<>();
     private Activity mContext;
 
-    public StudentListAdapter(Activity context, List<User> studentList) {
+    public StudentListAdapter(Activity context, List<Student> studentList) {
         this.mContext = context;
         this.studentList = studentList;
     }
@@ -48,13 +47,13 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
-        User student = studentList.get(position);
+        Student student = studentList.get(position);
         holder.name_tv.setText("姓名：" + student.getName());
         holder.class_tv.setText("班级：" + student.getClassNo());
         holder.no_tv.setText("学号：" + student.getStudyNo());
 
         holder.item.setOnClickListener(view -> {
-            Intent intent = new Intent(mContext, UserInfoActivity.class);
+            Intent intent = new Intent(mContext.getApplicationContext(), UserInfoActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("bean", student);
             intent.putExtras(bundle);
@@ -83,7 +82,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         }
     }
 
-    public void setStudentList(List<User> studentList) {
+    public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
         notifyDataSetChanged();
     }

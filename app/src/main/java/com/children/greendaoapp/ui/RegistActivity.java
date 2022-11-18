@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class RegistActivity extends AppCompatActivity {
 
     private EditText name, psd;
     private Button regist;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +31,20 @@ public class RegistActivity extends AppCompatActivity {
         name = findViewById(R.id.username);
         psd = findViewById(R.id.password);
         regist = findViewById(R.id.regist);
+        back = findViewById(R.id.back);
 
+
+        back.setOnClickListener(view ->{
+            finish();
+        });
         regist.setOnClickListener(view -> {
             User user = new User();
-            user.setStudyNo(name.getText().toString());
+            user.setPhone(name.getText().toString());
             user.setPassword(psd.getText().toString());
             List<User> sLists = DaoUtilsStore2.getInstance().getmUserDaoUtils().queryAll();
             boolean canInsert = true;
             for (int i = 0; i < sLists.size(); i++) {
-                if (sLists.get(i).getStudyNo().equals(user.getStudyNo())) {
+                if (sLists.get(i).getPhone().equals(user.getPhone())) {
                     canInsert = false;
                 }
             }
@@ -48,7 +55,7 @@ public class RegistActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }else {
-                Toast.makeText(getApplicationContext(), "学号"+user.getStudyNo() + "已存在 不可重复注册", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "手机号"+user.getPhone() + "已存在 不可重复注册", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import java.util.List;
 public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {
     private Button add;
     private EditText name_et, study_no_et, class_et, math_et, chinese_et, english_et, sum_et, rank_et;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +43,20 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         english_et = findViewById(R.id.english_et);
         sum_et = findViewById(R.id.sum_et);
         rank_et = findViewById(R.id.rank_et);
+        back = findViewById(R.id.back);
 
         add.setOnClickListener(this);
+        back.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
             case R.id.add:
-                User user = new User();
+                Student user = new Student();
                 user.setName(name_et.getText().toString());
                 user.setStudyNo(study_no_et.getText().toString());
                 user.setClassNo(class_et.getText().toString());
@@ -57,9 +64,11 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
                 user.setEnglish(english_et.getText().toString());
                 user.setMath(math_et.getText().toString());
                 user.setSum(sum_et.getText().toString());
-                user.setRank(Integer.parseInt(rank_et.getText().toString()));
+                if (!"".equals(rank_et.getText().toString())){
+                    user.setRank(Integer.parseInt(rank_et.getText().toString()));
+                }
 
-                List<User> sLists = DaoUtilsStore2.getInstance().getmUserDaoUtils().queryAll();
+                List<Student> sLists = DaoUtilsStore.getInstance().getmStudentDaoUtils().queryAll();
                 boolean canInsert = true;
                 for (int i = 0; i < sLists.size(); i++) {
                     if (sLists.get(i).getStudyNo().equals(user.getStudyNo())) {
@@ -67,7 +76,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 }
                 if (canInsert) {
-                    DaoUtilsStore2.getInstance().getmUserDaoUtils().insert(user);
+                    DaoUtilsStore.getInstance().getmStudentDaoUtils().insert(user);
                     Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                     finish();

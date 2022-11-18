@@ -5,28 +5,30 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.children.greendaoapp.R;
 import com.children.greendaoapp.entity.Student;
-import com.children.greendaoapp.entity.User;
 import com.children.greendaoapp.utils.DaoUtilsStore;
-import com.children.greendaoapp.utils.DaoUtilsStore2;
 
-import java.util.List;
-
+/**
+ * 学生信息展示页  可以编辑 删除
+ */
 public class UserInfoActivity extends AppCompatActivity implements View.OnClickListener {
     private Button modify, delete;
     private EditText name_et, study_no_et, class_et, math_et, chinese_et, english_et, sum_et, rank_et;
-    private User user;
+    private Student user;
     private long id;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+        //初始化各个view
         modify = findViewById(R.id.modify);
         delete = findViewById(R.id.delete);
         name_et = findViewById(R.id.name_et);
@@ -37,9 +39,10 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         english_et = findViewById(R.id.english_et);
         sum_et = findViewById(R.id.sum_et);
         rank_et = findViewById(R.id.rank_et);
+        back = findViewById(R.id.back);
 
 
-        user = (User) getIntent().getExtras().getSerializable("bean");
+        user = (Student) getIntent().getExtras().getSerializable("bean");
         id = user.getId();
 
         if (user != null) {
@@ -74,13 +77,16 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
 
         modify.setOnClickListener(this);
         delete.setOnClickListener(this);
+        back.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.modify:
-                User user = DaoUtilsStore2.getInstance().getmUserDaoUtils().queryById(id);
+                //修改学生信息
+                Student user = DaoUtilsStore.getInstance().getmStudentDaoUtils().queryById(id);
                 user.setName(name_et.getText().toString());
                 user.setStudyNo(study_no_et.getText().toString());
                 user.setClassNo(class_et.getText().toString());
@@ -90,7 +96,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
                 user.setSum(sum_et.getText().toString());
                 user.setRank(Integer.parseInt(rank_et.getText().toString()));
 
-                if (DaoUtilsStore2.getInstance().getmUserDaoUtils().update(user)) {
+                if (DaoUtilsStore.getInstance().getmStudentDaoUtils().update(user)) {
                     Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                     finish();
@@ -99,13 +105,17 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             case R.id.delete:
-                if (DaoUtilsStore2.getInstance().getmUserDaoUtils().delete(DaoUtilsStore2.getInstance().getmUserDaoUtils().queryById(id))) {
+                //删除学生信息
+                if (DaoUtilsStore.getInstance().getmStudentDaoUtils().delete(DaoUtilsStore.getInstance().getmStudentDaoUtils().queryById(id))) {
                     Toast.makeText(getApplicationContext(), "删除成功", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "删除失败", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.back:
+                finish();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());

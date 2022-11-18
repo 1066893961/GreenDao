@@ -26,15 +26,7 @@ public class UserDao extends AbstractDao<User, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Phone = new Property(1, String.class, "phone", false, "PHONE");
-        public final static Property Name = new Property(2, String.class, "name", false, "NAME");
-        public final static Property Password = new Property(3, String.class, "password", false, "PASSWORD");
-        public final static Property ClassNo = new Property(4, String.class, "classNo", false, "CLASS_NO");
-        public final static Property StudyNo = new Property(5, String.class, "studyNo", false, "STUDY_NO");
-        public final static Property Math = new Property(6, String.class, "math", false, "MATH");
-        public final static Property Chinese = new Property(7, String.class, "chinese", false, "CHINESE");
-        public final static Property English = new Property(8, String.class, "english", false, "ENGLISH");
-        public final static Property Sum = new Property(9, String.class, "sum", false, "SUM");
-        public final static Property Rank = new Property(10, int.class, "rank", false, "RANK");
+        public final static Property Password = new Property(2, String.class, "password", false, "PASSWORD");
     }
 
 
@@ -52,15 +44,7 @@ public class UserDao extends AbstractDao<User, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"PHONE\" TEXT UNIQUE ," + // 1: phone
-                "\"NAME\" TEXT," + // 2: name
-                "\"PASSWORD\" TEXT," + // 3: password
-                "\"CLASS_NO\" TEXT," + // 4: classNo
-                "\"STUDY_NO\" TEXT," + // 5: studyNo
-                "\"MATH\" TEXT," + // 6: math
-                "\"CHINESE\" TEXT," + // 7: chinese
-                "\"ENGLISH\" TEXT," + // 8: english
-                "\"SUM\" TEXT," + // 9: sum
-                "\"RANK\" INTEGER NOT NULL );"); // 10: rank
+                "\"PASSWORD\" TEXT);"); // 2: password
     }
 
     /** Drops the underlying database table. */
@@ -83,46 +67,10 @@ public class UserDao extends AbstractDao<User, Long> {
             stmt.bindString(2, phone);
         }
  
-        String name = entity.getName();
-        if (name != null) {
-            stmt.bindString(3, name);
-        }
- 
         String password = entity.getPassword();
         if (password != null) {
-            stmt.bindString(4, password);
+            stmt.bindString(3, password);
         }
- 
-        String classNo = entity.getClassNo();
-        if (classNo != null) {
-            stmt.bindString(5, classNo);
-        }
- 
-        String studyNo = entity.getStudyNo();
-        if (studyNo != null) {
-            stmt.bindString(6, studyNo);
-        }
- 
-        String math = entity.getMath();
-        if (math != null) {
-            stmt.bindString(7, math);
-        }
- 
-        String chinese = entity.getChinese();
-        if (chinese != null) {
-            stmt.bindString(8, chinese);
-        }
- 
-        String english = entity.getEnglish();
-        if (english != null) {
-            stmt.bindString(9, english);
-        }
- 
-        String sum = entity.getSum();
-        if (sum != null) {
-            stmt.bindString(10, sum);
-        }
-        stmt.bindLong(11, entity.getRank());
     }
 
     @Override
@@ -139,46 +87,10 @@ public class UserDao extends AbstractDao<User, Long> {
             stmt.bindString(2, phone);
         }
  
-        String name = entity.getName();
-        if (name != null) {
-            stmt.bindString(3, name);
-        }
- 
         String password = entity.getPassword();
         if (password != null) {
-            stmt.bindString(4, password);
+            stmt.bindString(3, password);
         }
- 
-        String classNo = entity.getClassNo();
-        if (classNo != null) {
-            stmt.bindString(5, classNo);
-        }
- 
-        String studyNo = entity.getStudyNo();
-        if (studyNo != null) {
-            stmt.bindString(6, studyNo);
-        }
- 
-        String math = entity.getMath();
-        if (math != null) {
-            stmt.bindString(7, math);
-        }
- 
-        String chinese = entity.getChinese();
-        if (chinese != null) {
-            stmt.bindString(8, chinese);
-        }
- 
-        String english = entity.getEnglish();
-        if (english != null) {
-            stmt.bindString(9, english);
-        }
- 
-        String sum = entity.getSum();
-        if (sum != null) {
-            stmt.bindString(10, sum);
-        }
-        stmt.bindLong(11, entity.getRank());
     }
 
     @Override
@@ -191,15 +103,7 @@ public class UserDao extends AbstractDao<User, Long> {
         User entity = new User( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // phone
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // name
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // password
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // classNo
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // studyNo
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // math
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // chinese
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // english
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // sum
-            cursor.getInt(offset + 10) // rank
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // password
         );
         return entity;
     }
@@ -208,15 +112,7 @@ public class UserDao extends AbstractDao<User, Long> {
     public void readEntity(Cursor cursor, User entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setPhone(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setPassword(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setClassNo(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setStudyNo(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setMath(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setChinese(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setEnglish(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setSum(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setRank(cursor.getInt(offset + 10));
+        entity.setPassword(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
      }
     
     @Override

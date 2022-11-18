@@ -10,46 +10,44 @@ import com.children.greendaoapp.gen.DaoSession;
 import com.children.greendaoapp.gen.IdCardDao;
 import com.children.greendaoapp.gen.StudentDao;
 
+import java.io.Serializable;
+
 /**
- * @Description:
- * @Author: leo.li
- * @CreateDate: 2022/3/24 11:37
+ *
  */
 @Entity
-public class Student {
+public class Student implements Serializable {
+
+    private static final long serialVersionUID = 2L;
+
     @Id(autoincrement = true)
     Long id;
     @Unique
-    int studentNo;//学号
-    int age; //年龄
-    String telPhone;//手机号
-    String sex; //性别
+    String phone;//手机号
     String name;//姓名
-    String address;//家庭住址
-    String schoolName;//学校名字
-    String grade;//几年级
-    @ToOne(joinProperty = "name")
-    IdCard student;
-    /** Used to resolve relations */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-    /** Used for active entity operations. */
-    @Generated(hash = 1943931642)
-    private transient StudentDao myDao;
-    @Generated(hash = 635690445)
-    private transient String student__resolvedKey;
-    @Generated(hash = 1071002287)
-    public Student(Long id, int studentNo, int age, String telPhone, String sex,
-            String name, String address, String schoolName, String grade) {
+    String password;
+    String classNo;//班级
+    String studyNo;//学号
+    String math;//数学成绩
+    String chinese;//语文成绩
+    String english;//英语成绩
+    String sum;//总成绩
+    int rank;//排名
+    @Generated(hash = 103863350)
+    public Student(Long id, String phone, String name, String password,
+            String classNo, String studyNo, String math, String chinese,
+            String english, String sum, int rank) {
         this.id = id;
-        this.studentNo = studentNo;
-        this.age = age;
-        this.telPhone = telPhone;
-        this.sex = sex;
+        this.phone = phone;
         this.name = name;
-        this.address = address;
-        this.schoolName = schoolName;
-        this.grade = grade;
+        this.password = password;
+        this.classNo = classNo;
+        this.studyNo = studyNo;
+        this.math = math;
+        this.chinese = chinese;
+        this.english = english;
+        this.sum = sum;
+        this.rank = rank;
     }
     @Generated(hash = 1556870573)
     public Student() {
@@ -60,29 +58,11 @@ public class Student {
     public void setId(Long id) {
         this.id = id;
     }
-    public int getStudentNo() {
-        return this.studentNo;
+    public String getPhone() {
+        return this.phone;
     }
-    public void setStudentNo(int studentNo) {
-        this.studentNo = studentNo;
-    }
-    public int getAge() {
-        return this.age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public String getTelPhone() {
-        return this.telPhone;
-    }
-    public void setTelPhone(String telPhone) {
-        this.telPhone = telPhone;
-    }
-    public String getSex() {
-        return this.sex;
-    }
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
     public String getName() {
         return this.name;
@@ -90,88 +70,53 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
-    public String getAddress() {
-        return this.address;
+    public String getPassword() {
+        return this.password;
     }
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    public String getSchoolName() {
-        return this.schoolName;
+    public String getClassNo() {
+        return this.classNo;
     }
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
+    public void setClassNo(String classNo) {
+        this.classNo = classNo;
     }
-    public String getGrade() {
-        return this.grade;
+    public String getStudyNo() {
+        return this.studyNo;
     }
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setStudyNo(String studyNo) {
+        this.studyNo = studyNo;
     }
-    /** To-one relationship, resolved on first access. */
-    @Generated(hash = 137743110)
-    public IdCard getStudent() {
-        String __key = this.name;
-        if (student__resolvedKey == null || student__resolvedKey != __key) {
-            final DaoSession daoSession = this.daoSession;
-            if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
-            }
-            IdCardDao targetDao = daoSession.getIdCardDao();
-            IdCard studentNew = targetDao.load(__key);
-            synchronized (this) {
-                student = studentNew;
-                student__resolvedKey = __key;
-            }
-        }
-        return student;
+    public String getMath() {
+        return this.math;
     }
-    /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1847551028)
-    public void setStudent(IdCard student) {
-        synchronized (this) {
-            this.student = student;
-            name = student == null ? null : student.getUserName();
-            student__resolvedKey = name;
-        }
+    public void setMath(String math) {
+        this.math = math;
     }
-    /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
-     * Entity must attached to an entity context.
-     */
-    @Generated(hash = 128553479)
-    public void delete() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.delete(this);
+    public String getChinese() {
+        return this.chinese;
     }
-    /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
-     * Entity must attached to an entity context.
-     */
-    @Generated(hash = 1942392019)
-    public void refresh() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.refresh(this);
+    public void setChinese(String chinese) {
+        this.chinese = chinese;
     }
-    /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
-     * Entity must attached to an entity context.
-     */
-    @Generated(hash = 713229351)
-    public void update() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.update(this);
+    public String getEnglish() {
+        return this.english;
     }
-    /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1701634981)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getStudentDao() : null;
+    public void setEnglish(String english) {
+        this.english = english;
     }
+    public String getSum() {
+        return this.sum;
+    }
+    public void setSum(String sum) {
+        this.sum = sum;
+    }
+    public int getRank() {
+        return this.rank;
+    }
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
 }

@@ -4,8 +4,8 @@
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="1dp"
-    android:background="@color/bg"
+    android:layout_margin="5dp"
+    android:background="@drawable/item_bg"
     android:padding="10dp">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="姓名："
-        android:textColor="@color/blue" />
+        android:textColor="@color/color_030303" />
 
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_below="@+id/name_tv"
         android:layout_marginTop="4dp"
         android:text="班级："
-        android:textColor="@color/blue" />
+        android:textColor="@color/color_030303" />
 
     <TextView
         android:id="@+id/no_tv"
@@ -32,7 +32,7 @@
         android:layout_below="@+id/class_tv"
         android:layout_marginTop="4dp"
         android:text="学号："
-        android:textColor="@color/blue" />
+        android:textColor="@color/color_030303" />
 
     <ImageView
         android:layout_width="wrap_content"
