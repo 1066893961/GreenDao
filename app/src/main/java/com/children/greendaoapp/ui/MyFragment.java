@@ -32,6 +32,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private RelativeLayout account_rel, info_rel, update_rel, cache_rel, agree_rel, change_rel;
     private LinearLayout all_ll;
     private boolean flag;
+    private String mPhone;
 
     @Nullable
     @Override
@@ -52,8 +53,8 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         //先获取对应的Share
         SharedPreferences sp = getContext().getSharedPreferences("MY_SHARE", Context.MODE_PRIVATE);
         //根据key取出对应的值
-        String phone = sp.getString("phone", "");//第二个参数为默认值，即当从Share中取不到时，返回这个值
-        name.setText("登录账号：" + phone);
+        mPhone = sp.getString("phone", "");//第二个参数为默认值，即当从Share中取不到时，返回这个值
+        name.setText("登录账号：" + mPhone);
 
         logout.setOnClickListener(view -> {
             logolOut();
@@ -81,6 +82,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         //Editor对象有几个方法需要注：clear()，commit()，putXXX(),clear()为清空Share文件中的内容，
         //commit()为提交，editor在put值以后，需要调用commit方法才能被真正写入到Share文件中
         editor.putString("phone", "").commit();
+        editor.putLong("id", 0).commit();
 
     }
 
@@ -89,12 +91,17 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.account_rel:
-                //账号管理
-
+                //个人信息管理
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), InfoManagerActivity.class);
+                intent.putExtra("phone", mPhone);
+                startActivity(intent);
                 break;
             case R.id.info_rel:
-                //完善个人资料
-
+                //修改密码
+                Intent intent2 = new Intent();
+                intent2.setClass(getActivity(), ModifyPwdActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.update_rel:
                 //版本更新

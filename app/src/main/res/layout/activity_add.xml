@@ -67,7 +67,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="请输入学生学号"
-            android:inputType="number"
             android:textColor="@color/grey"
             android:textSize="16sp" />
 

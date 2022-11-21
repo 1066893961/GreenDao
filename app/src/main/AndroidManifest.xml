@@ -5,16 +5,16 @@
     <application
         android:name="com.children.greendaoapp.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenDaoApp">
 
         <activity
             android:name=".ui.LoginActivity"
-            android:launchMode="singleTop"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +33,12 @@
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.InfoManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ModifyPwdActivity"
             android:exported="false" />
     </application>
 

@@ -18,6 +18,7 @@ import com.children.greendaoapp.entity.BottomTab;
 import com.children.greendaoapp.event.LogoutEvent;
 import com.children.greendaoapp.utils.FragmentTabHost;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -28,6 +29,10 @@ import java.util.List;
  * 首页
  */
 public class MainActivity extends AppCompatActivity {
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(Object myEvent) {
+    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(LogoutEvent event) {
@@ -45,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initTab();
+
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
 
     }
 
@@ -110,6 +119,14 @@ public class MainActivity extends AppCompatActivity {
                     homePageFragment.notifyChannelChange();
                     break;
             }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
         }
     }
 }

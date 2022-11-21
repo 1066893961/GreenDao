@@ -46,11 +46,11 @@ public class HomePageFragment extends Fragment {
             empty_tv.setVisibility(View.VISIBLE);
         }else{
             empty_tv.setVisibility(View.GONE);
-            studentListAdapter = new StudentListAdapter(getActivity(), DaoUtilsStore.getInstance().getmStudentDaoUtils().queryAll());
-            rv.setLayoutManager(new LinearLayoutManager(getContext()));
-//            rv.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-            rv.setAdapter(studentListAdapter);
         }
+        studentListAdapter = new StudentListAdapter(getActivity(), DaoUtilsStore.getInstance().getmStudentDaoUtils().queryAll());
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+//            rv.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        rv.setAdapter(studentListAdapter);
 
 
 

@@ -17,11 +17,18 @@ public class User implements Serializable {
     @Unique
     String phone;//手机号
     String password;
-    @Generated(hash = 800558714)
-    public User(Long id, String phone, String password) {
+    String age;
+    String sex;
+    String address;
+    @Generated(hash = 438061888)
+    public User(Long id, String phone, String password, String age, String sex,
+            String address) {
         this.id = id;
         this.phone = phone;
         this.password = password;
+        this.age = age;
+        this.sex = sex;
+        this.address = address;
     }
     @Generated(hash = 586692638)
     public User() {
@@ -43,6 +50,24 @@ public class User implements Serializable {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getAge() {
+        return this.age;
+    }
+    public void setAge(String age) {
+        this.age = age;
+    }
+    public String getSex() {
+        return this.sex;
+    }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    public String getAddress() {
+        return this.address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }
