@@ -19,10 +19,10 @@ import com.children.greendaoapp.utils.DaoUtilsStore;
  */
 public class UserInfoActivity extends AppCompatActivity implements View.OnClickListener {
     private Button modify, delete;
-    private EditText name_et, study_no_et, class_et, math_et, chinese_et, english_et, sum_et, rank_et;
+    private EditText title, content;
     private Student user;
     private long id;
-    private ImageView back;
+    private ImageView back, img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +31,9 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         //初始化各个view
         modify = findViewById(R.id.modify);
         delete = findViewById(R.id.delete);
-        name_et = findViewById(R.id.name_et);
-        study_no_et = findViewById(R.id.study_no_et);
-        class_et = findViewById(R.id.class_et);
-        math_et = findViewById(R.id.math_et);
-        chinese_et = findViewById(R.id.chinese_et);
-        english_et = findViewById(R.id.english_et);
-        sum_et = findViewById(R.id.sum_et);
-        rank_et = findViewById(R.id.rank_et);
+        title = findViewById(R.id.title);
+        content = findViewById(R.id.content);
+        img = findViewById(R.id.img);
         back = findViewById(R.id.back);
 
 
@@ -46,33 +41,21 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         id = user.getId();
 
         if (user != null) {
+            if (user.getClassNo().equals("植树")) {
+                img.setImageResource(R.mipmap.img_1);
+            } else if (user.getClassNo().equals("爱护环境 关爱地球")) {
+                img.setImageResource(R.mipmap.img_2);
+            } else if (user.getClassNo().equals("敬老爱老 全民行动")) {
+                img.setImageResource(R.mipmap.img_3);
+            } else if (user.getClassNo().equals("其他")) {
+                img.setImageResource(R.mipmap.img_4);
+            }
             if (!TextUtils.isEmpty(user.getName())) {
-                name_et.setText(user.getName());
+                title.setText(user.getName());
             }
             if (!TextUtils.isEmpty(user.getStudyNo())) {
-                study_no_et.setText(user.getStudyNo());
+                content.setText(user.getStudyNo());
             }
-
-            if (!TextUtils.isEmpty(user.getClassNo())) {
-                class_et.setText(user.getClassNo());
-            }
-
-            if (!TextUtils.isEmpty(user.getClassNo())) {
-                math_et.setText(user.getClassNo());
-            }
-            if (!TextUtils.isEmpty(user.getChinese())) {
-                chinese_et.setText(user.getChinese());
-            }
-            if (!TextUtils.isEmpty(user.getEnglish())) {
-                english_et.setText(user.getEnglish());
-            }
-            if (!TextUtils.isEmpty(user.getSum())) {
-                sum_et.setText(user.getSum());
-            }
-            if (user.getRank() != 0) {
-                rank_et.setText(String.valueOf(user.getRank()));
-            }
-
         }
 
         modify.setOnClickListener(this);
@@ -87,14 +70,9 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
             case R.id.modify:
                 //修改学生信息
                 Student user = DaoUtilsStore.getInstance().getmStudentDaoUtils().queryById(id);
-                user.setName(name_et.getText().toString());
-                user.setStudyNo(study_no_et.getText().toString());
-                user.setClassNo(class_et.getText().toString());
-                user.setChinese(chinese_et.getText().toString());
-                user.setEnglish(english_et.getText().toString());
-                user.setMath(math_et.getText().toString());
-                user.setSum(sum_et.getText().toString());
-                user.setRank(Integer.parseInt(rank_et.getText().toString()));
+                user.setName(title.getText().toString());
+                user.setStudyNo(content.getText().toString());
+                user.setClassNo(user.getClassNo());
 
                 if (DaoUtilsStore.getInstance().getmStudentDaoUtils().update(user)) {
                     Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_SHORT).show();

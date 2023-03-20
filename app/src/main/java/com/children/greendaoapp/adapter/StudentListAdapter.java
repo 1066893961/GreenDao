@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -48,9 +49,17 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     @Override
     public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
         Student student = studentList.get(position);
-        holder.name_tv.setText("姓名：" + student.getName());
-        holder.class_tv.setText("班级：" + student.getClassNo());
-        holder.no_tv.setText("学号：" + student.getStudyNo());
+        holder.name_tv.setText(student.getName());
+        if (studentList.get(position).getClassNo().equals("植树")) {
+            holder.img.setImageResource(R.mipmap.img_1);
+        } else if (studentList.get(position).getClassNo().equals("爱护环境 关爱地球")) {
+            holder.img.setImageResource(R.mipmap.img_2);
+        } else if (studentList.get(position).getClassNo().equals("敬老爱老 全民行动")) {
+            holder.img.setImageResource(R.mipmap.img_3);
+        } else if (studentList.get(position).getClassNo().equals("其他")) {
+            holder.img.setImageResource(R.mipmap.img_4);
+        }
+
 
         holder.item.setOnClickListener(view -> {
             Intent intent = new Intent(mContext.getApplicationContext(), UserInfoActivity.class);
@@ -69,15 +78,15 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     static class StudentViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name_tv, class_tv, no_tv;
+        private TextView name_tv;
+        private ImageView img;
         private RelativeLayout item;
 
         public StudentViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name_tv = itemView.findViewById(R.id.name_tv);
-            class_tv = itemView.findViewById(R.id.class_tv);
-            no_tv = itemView.findViewById(R.id.no_tv);
+            img = itemView.findViewById(R.id.img);
             item = itemView.findViewById(R.id.item);
         }
     }

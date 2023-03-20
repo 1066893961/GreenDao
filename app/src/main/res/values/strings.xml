@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">学生信息管理</string>
+    <string name="app_name">校园公益</string>
     <string name="news_fragment">首页</string>
     <string name="about_fragment">我</string>
     <string name="title_activity_login">LoginActivity</string>

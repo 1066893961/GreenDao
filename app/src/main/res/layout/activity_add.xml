@@ -9,42 +9,89 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="#FF14BACA"
-        android:layout_height="44dp">
+        android:layout_height="44dp"
+        android:background="#FF14BACA">
+
         <ImageView
             android:id="@+id/back"
             android:layout_width="44dp"
-            android:src="@mipmap/back"
+            android:layout_height="44dp"
             android:scaleType="centerInside"
-            android:layout_height="44dp"/>
+            android:src="@mipmap/back" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="添加学生"
+            android:text="活动发布"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
     </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="学生姓名："
+            android:text="活动类型："
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/input_line_bg">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:entries="@array/type"
+                android:spinnerMode="dropdown"
+                android:textColor="@color/color_030303"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="活动标题："
             android:textColor="@color/grey"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/name_et"
-            android:layout_width="wrap_content"
+            android:id="@+id/title_et"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入学生姓名"
+            android:background="@drawable/input_line_bg"
+            android:gravity="start"
+            android:hint="请输入活动标题"
+            android:minHeight="100dp"
+            android:padding="10dp"
             android:textColor="@color/grey"
             android:textSize="16sp" />
 
@@ -53,161 +100,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_margin="5dp"
+        android:gravity="center_vertical">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="学生学号："
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="活动内容："
             android:textColor="@color/grey"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/study_no_et"
-            android:layout_width="wrap_content"
+            android:id="@+id/content_et"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入学生学号"
+            android:background="@drawable/input_line_bg"
+            android:gravity="start"
+            android:hint="请输入活动内容"
+            android:minHeight="100dp"
+            android:padding="10dp"
             android:textColor="@color/grey"
             android:textSize="16sp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="学生班级："
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/class_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入学生班级"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="数学成绩："
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/math_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入数学成绩"
-            android:inputType="number"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="语文成绩："
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/chinese_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入语文成绩"
-            android:inputType="number"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="英语成绩："
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/english_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入英语成绩"
-            android:inputType="number"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="总成绩："
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/sum_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入总成绩"
-            android:inputType="number"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="排名："
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/rank_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入学生排名"
-            android:inputType="number"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/add"
@@ -216,6 +133,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:text="添加" />
-
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
